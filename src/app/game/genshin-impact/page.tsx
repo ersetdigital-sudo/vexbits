@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import GamePageLayout from "@/components/GamePageLayout";
-import { getGame } from "@/lib/games";
+import { getGameFromDB } from "@/lib/db-games";
 
-const g = getGame("genshin-impact")!;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Top Up Genshin Impact Murah & Instan | VEXBITS",
-  description: "Top up Genshin Impact (HoYoverse) harga termurah di VEXBITS. Proses otomatis 10 detik, bayar via QRIS, e-wallet, atau minimarket.",
+  title: "Top Up Genshin Impact Genesis Crystal Murah & Instan | VEXBITS",
+  description: "Top up Genshin Impact Genesis Crystal termurah di VEXBITS. Harga mulai Rp16.000, proses instan, bayar via QRIS, e-wallet, VA bank, atau minimarket.",
+  alternates: { canonical: "/game/genshin-impact" },
+  openGraph: {
+    title: "Top Up Genshin Impact Genesis Crystal Murah | VEXBITS",
+    description: "Top up Genshin Impact termurah. Harga mulai Rp16.000, proses instan.",
+    url: "https://www.vexbits.net/game/genshin-impact",
+    images: ["/og-image.png"],
+  },
 };
 
-export default function Page() {
-  return <GamePageLayout game={g} />;
+export default async function Page() {
+  const game = await getGameFromDB("genshin-impact");
+  if (!game) return <div className="wrap py-20 text-center text-sm text-[var(--ink-soft)]">Game tidak ditemukan.</div>;
+  return <GamePageLayout game={game} />;
 }

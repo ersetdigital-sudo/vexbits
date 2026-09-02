@@ -1,20 +1,63 @@
 "use client";
 
-import { useState } from "react";
-import { PAYMENTS, type GameData } from "@/lib/games";
+import { useState, useEffect } from "react";
+import type { GameData } from "@/lib/games";
+
+type PaymentMethod = { value: string; note?: string };
+
+const FALLBACK_PAYMENTS: PaymentMethod[] = [
+  { value: "QRIS", note: "Semua e-wallet & m-banking" },
+  { value: "GoPay" },
+  { value: "OVO" },
+  { value: "DANA" },
+  { value: "ShopeePay" },
+  { value: "BCA Virtual Account" },
+  { value: "BRI Virtual Account" },
+  { value: "Mandiri VA" },
+  { value: "Alfamart" },
+  { value: "Indomaret" },
+];
+
+const PAYMENT_NOTES: Record<string, string> = {
+  QRIS: "Semua e-wallet & m-banking",
+};
 
 export default function GameOrderForm({ game }: { game: GameData }) {
-  const [nominal, setNominal] = useState(game.nominals[0].value);
-  const [bayar, setBayar] = useState(PAYMENTS[0].value);
+  const [nominal, setNominal] = useState(game.nominals[0]?.value ?? "");
+  const [bayar, setBayar] = useState("");
   const [userId, setUserId] = useState("");
   const [zoneId, setZoneId] = useState("");
   const [wa, setWa] = useState("");
+  const [payments, setPayments] = useState<PaymentMethod[]>(FALLBACK_PAYMENTS);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => r.json())
+      .then((data: { payment_methods?: string[] }) => {
+        if (Array.isArray(data.payment_methods) && data.payment_methods.length > 0) {
+          const methods = data.payment_methods.map((m: string) => ({
+            value: m,
+            note: PAYMENT_NOTES[m],
+          }));
+          setPayments(methods);
+          setBayar(methods[0].value);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (bayar === "" && payments.length > 0) {
+      setBayar(payments[0].value);
+    }
+  }, [payments, bayar]);
 
   const akun = userId.trim() ? userId.trim() + (zoneId.trim() ? " (" + zoneId.trim() + ")" : "") : "-";
   const item = nominal;
   const total = game.nominals.find((n) => n.value === nominal)?.price ?? "0";
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const uid = userId.trim();
     const w = wa.trim();
@@ -22,15 +65,39 @@ export default function GameOrderForm({ game }: { game: GameData }) {
       alert("Lengkapi ID akun dan nomor WhatsApp dulu ya.");
       return;
     }
-    const q = new URLSearchParams({
-      game: game.title,
-      akun: uid + (zoneId.trim() ? " (" + zoneId.trim() + ")" : ""),
-      item,
-      total,
-      bayar,
-      wa: w,
-    });
-    window.location.href = "/terima-kasih?" + q.toString();
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          game_title: game.title,
+          product_slug: game.slug,
+          account_id: uid,
+          zone_id: zoneId.trim() || null,
+          item,
+          price: total,
+          payment_method: bayar,
+          wa_number: w,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Gagal membuat pesanan");
+      const inv = data.order.invoice;
+      const q = new URLSearchParams({
+        inv,
+        game: game.title,
+        akun: uid + (zoneId.trim() ? " (" + zoneId.trim() + ")" : ""),
+        item,
+        total,
+        bayar,
+        wa: w,
+      });
+      window.location.href = "/terima-kasih?" + q.toString();
+    } catch (err: unknown) {
+      alert(err instanceof Error ? err.message : "Terjadi kesalahan");
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -71,7 +138,7 @@ export default function GameOrderForm({ game }: { game: GameData }) {
         <section className="card p-5">
           <div className="flex items-center gap-3"><span className="step-num">3</span><h2 className="text-lg font-bold">Metode Pembayaran</h2></div>
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {PAYMENTS.map((p) => (
+            {payments.map((p) => (
               <label className="opt" key={p.value}>
                 <input type="radio" name="bayar" value={p.value} checked={bayar === p.value} onChange={() => setBayar(p.value)} />
                 <div className="box"><span className="tick">✓</span><p className="text-sm font-bold leading-tight pr-4">{p.value}</p>{p.note && <p className="text-[11px] text-[var(--ink-soft)] mt-0.5">{p.note}</p>}</div>
@@ -104,7 +171,7 @@ export default function GameOrderForm({ game }: { game: GameData }) {
           <span className="text-sm text-[var(--ink-soft)]">Total</span>
           <span id="sumTotal" className="text-2xl font-extrabold font-display text-[var(--blue)]">Rp{total}</span>
         </div>
-        <button type="submit" className="mt-4 w-full h-12 rounded-xl bg-[var(--orange)] text-white font-bold hover:bg-[#F06C09] shadow-soft">Bayar Sekarang</button>
+        <button type="submit" disabled={submitting} className="mt-4 w-full h-12 rounded-xl bg-[var(--orange)] text-white font-bold hover:bg-[#F06C09] shadow-soft disabled:opacity-50">{submitting ? "Memproses..." : "Bayar Sekarang"}</button>
         <p className="mt-3 text-[11px] text-[var(--ink-soft)] text-center">Dengan melanjutkan kamu menyetujui Syarat &amp; Ketentuan VEXBITS.</p>
       </aside>
     </form>

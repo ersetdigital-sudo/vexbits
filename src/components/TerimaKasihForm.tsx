@@ -21,9 +21,11 @@ export default function TerimaKasihForm() {
   const [secondsLeft, setSecondsLeft] = useState(15 * 60);
   const [details, setDetails] = useState({ game: "", akun: "", item: "", bayar: "", total: "0", wa: "" });
   const [showCheck, setShowCheck] = useState(false);
+  const [qrisUrl, setQrisUrl] = useState("");
 
   useEffect(() => {
     const q = new URLSearchParams(window.location.search);
+    const invParam = q.get("inv");
     setDetails({
       game: q.get("game") || "Mobile Legends: Bang Bang",
       akun: q.get("akun") || "-",
@@ -32,8 +34,15 @@ export default function TerimaKasihForm() {
       total: q.get("total") || "0",
       wa: q.get("wa") ? q.get("wa")!.replace(/^(\d{4})\d+(\d{3})$/, "$1****$2") : "-",
     });
-    setInv("VXB-" + String(Math.floor(100000 + Math.random() * 899999)));
+    setInv(invParam || "VXB-" + String(Math.floor(100000 + Math.random() * 899999)));
     setTimeout(() => setShowCheck(true), 100);
+
+    fetch("/api/settings")
+      .then((r) => r.json())
+      .then((data: { qris_url?: string }) => {
+        if (data.qris_url) setQrisUrl(data.qris_url);
+      })
+      .catch(() => {});
 
     let left = 15 * 60;
     const iv = setInterval(() => {
@@ -122,13 +131,20 @@ export default function TerimaKasihForm() {
           {/* QRIS Instructions (if QRIS) */}
           {details.bayar === "QRIS" && (
             <div className="mt-5 p-4 rounded-2xl bg-gradient-to-br from-[#f0f4ff] to-[#e8edf5] border border-[#C7D6FF]">
+              {qrisUrl && (
+                <div className="mb-4 flex justify-center">
+                  <div className="w-48 h-48 rounded-xl bg-white border border-[#C7D6FF] overflow-hidden p-2">
+                    <img src={qrisUrl} alt="QRIS Code" className="w-full h-full object-contain" />
+                  </div>
+                </div>
+              )}
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-lg bg-[var(--blue)] text-white grid place-items-center shrink-0 mt-0.5">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
                 </div>
                 <div>
                   <p className="text-sm font-bold text-[var(--blue)]">Cara Bayar QRIS</p>
-                  <p className="mt-1 text-xs text-[var(--ink-soft)] leading-relaxed">Buka e-wallet / mobile banking &rarr; pilih &quot;Bayar&quot; atau &quot;Scan QR&quot; &rarr; scan QR setelah klik Bayar Sekarang &rarr; konfirmasi.</p>
+                  <p className="mt-1 text-xs text-[var(--ink-soft)] leading-relaxed">Buka e-wallet / mobile banking &rarr; pilih &quot;Bayar&quot; atau &quot;Scan QR&quot; &rarr; scan QR di atas &rarr; konfirmasi.</p>
                 </div>
               </div>
             </div>

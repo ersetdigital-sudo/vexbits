@@ -20,6 +20,7 @@ export default function Footer() {
             <li><a href="#games" className="hover:text-[var(--blue)]">Semua Game</a></li>
             <li><a href="#cara-order" className="hover:text-[var(--blue)]">Cara Order</a></li>
             <li><a href="/cek-transaksi" className="hover:text-[var(--blue)]">Cek Transaksi</a></li>
+            <li><a href="/tentang-kami" className="hover:text-[var(--blue)]">Tentang Kami</a></li>
           </ul>
         </div>
 

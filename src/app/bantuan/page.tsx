@@ -2,18 +2,89 @@ import type { Metadata } from "next";
 import GameHeader from "@/components/GameHeader";
 import FaqSearch from "@/components/FaqSearch";
 
+const SITE_URL = "https://www.vexbits.net";
+
 export const metadata: Metadata = {
-  title: "Pusat Bantuan — VEXBITS",
-  description: "FAQ top up game, kebijakan refund, dan kontak customer service VEXBITS 24 jam.",
+  title: "Pusat Bantuan & FAQ Top Up Game | VEXBITS",
+  description: "FAQ top up game, kebijakan refund, panduan cara top up, dan kontak customer service VEXBITS 24 jam. Semua pertanyaan tentang VEXBITS ada di sini.",
+  alternates: { canonical: "/bantuan" },
+  openGraph: {
+    title: "Pusat Bantuan & FAQ Top Up Game | VEXBITS",
+    description: "FAQ top up game, kebijakan refund, panduan cara top up, dan kontak customer service VEXBITS 24 jam.",
+    url: `${SITE_URL}/bantuan`,
+    images: ["/og-image.png"],
+  },
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Berapa lama item masuk setelah saya bayar?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Rata-rata 10 detik setelah pembayaran terkonfirmasi. Untuk metode transfer bank atau minimarket, konfirmasi bisa memakan waktu 1-10 menit tergantung bank/gerai.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Apakah harus daftar akun dulu untuk top up?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tidak. Kamu bisa langsung pilih game, isi ID, dan bayar tanpa registrasi.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Metode pembayaran apa saja yang didukung?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "QRIS (semua e-wallet dan m-banking), GoPay, OVO, DANA, ShopeePay, Virtual Account BCA/BRI/Mandiri, serta pembayaran tunai di Alfamart dan Indomaret.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Apakah akun game saya aman?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Aman. VEXBITS hanya meminta ID publik (User ID/Zone ID/UID). Tidak pernah meminta password, OTP, atau akses ke akun game kamu.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Apakah top up di VEXBITS legal dan resmi?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ya. Semua produk dibeli melalui jalur distributor resmi, sehingga item dikirim langsung ke akun game tanpa perlu login. Tidak ada risiko banned.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Bagaimana cara mengajukan refund?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Siapkan bukti (invoice, bukti bayar, screenshot), chat CS dengan subjek 'Refund - [nomor invoice]'. Verifikasi 1x24 jam, dana dikembalikan sesuai metode asal.",
+      },
+    },
+  ],
 };
 
 export default function BantuanPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       <GameHeader />
       <main className="py-6 md:py-10">
         <div className="wrap">
-          <nav className="text-xs text-[var(--ink-soft)] mb-4"><a href="/" className="hover:text-[var(--blue)]">Beranda</a> › <span className="text-[var(--ink)] font-semibold">Pusat Bantuan</span></nav>
+          <nav className="text-xs text-[var(--ink-soft)] mb-4" aria-label="Breadcrumb">
+            <a href="/" className="hover:text-[var(--blue)]">Beranda</a> › <span className="text-[var(--ink)] font-semibold">Pusat Bantuan</span>
+          </nav>
 
           <div className="max-w-2xl">
             <h1 className="text-2xl md:text-3xl font-extrabold">Pusat Bantuan VEXBITS</h1>

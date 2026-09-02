@@ -1,0 +1,81 @@
+# VEXBITS - Top Up Game Cepat, Murah & Aman
+
+## Tentang
+VEXBITS adalah platform top up game terpercaya di Indonesia. Kami melayani top up untuk 6 game populer: Mobile Legends: Bang Bang, Free Fire, PUBG Mobile, Genshin Impact, Magic Chess: Go Go, dan Call of Duty Mobile. Semua proses otomatis, item masuk dalam 10 detik setelah pembayaran terkonfirmasi.
+
+## Keunggulan
+- Proses otomatis 10 detik
+- Harga termurah, mulai dari Rp1.500
+- Pembayaran aman via QRIS, e-wallet, VA bank, atau minimarket
+- Support 24/7, respons di bawah 3 menit
+- Tidak perlu daftar akun untuk top up
+
+## Game yang Tersedia
+
+### Mobile Legends: Bang Bang
+- Publisher: Moonton
+- Item: Diamond dan Twilight Pass
+- Harga: mulai Rp1.500
+- ID: User ID + Zone ID (lihat di avatar kiri atas)
+
+### Free Fire
+- Publisher: Garena
+- Item: Diamond dan Membership
+- Harga: mulai Rp2.000
+- ID: Player ID 9-11 digit (lihat di foto profil)
+
+### PUBG Mobile
+- Publisher: Level Infinite
+- Item: UC dan Royale Pass
+- Harga: mulai Rp13.000
+- ID: Character ID (lihat di menu Profil)
+
+### Genshin Impact
+- Publisher: HoYoverse
+- Item: Genesis Crystal, Blessing of the Welkin Moon, Battle Pass
+- Harga: mulai Rp16.000
+- ID: UID 9 digit (pojok kanan bawah layar) + Server
+
+### Magic Chess: Go Go
+- Publisher: Moonton
+- Item: Chess Coin, Season Pass, Bundle
+- Harga: mulai Rp3.000
+- ID: User ID + Zone ID (sama dengan Mobile Legends)
+
+### Call of Duty Mobile
+- Publisher: Activision
+- Item: CP dan Battle Pass
+- Harga: mulai Rp12.000
+- ID: Open ID (Profil > Setelan > Akun)
+
+## Metode Pembayaran
+- QRIS: bisa dibayar dari semua e-wallet dan m-banking
+- E-wallet: GoPay, OVO, DANA, ShopeePay
+- Virtual Account: BCA, BRI, Mandiri
+- Tunai: Alfamart, Indomaret
+
+## Cara Top Up
+1. Pilih game yang ingin di-top up
+2. Masukkan ID akun game (User ID, Zone ID, atau UID)
+3. Pilih nominal item
+4. Pilih metode pembayaran
+5. Bayar dan item langsung masuk ke akun game
+
+## Kebijakan Refund
+- Refund dapat diajukan jika: pembayaran berhasil tapi item tidak terkirim dalam 1x24 jam, double payment, kesalahan sistem
+- Refund tidak dapat diproses jika: salah ID dan item sudah terkirim, berubah pikiran setelah item masuk, klaim lebih dari 7 hari
+- Proses verifikasi: 1x24 jam
+- Pengembalian dana: Saldo VEXBITS instan, e-wallet 1-2 hari kerja, bank/VA 3-7 hari kerja
+
+## Kontak
+- WhatsApp: +62 812-3456-7890 (respon tercepat)
+- Email: support@vexbits.net (balas < 6 jam)
+- Instagram: @vexbits
+- Website: https://www.vexbits.net
+
+## FAQ Singkat
+- Berapa lama item masuk? Rata-rata 10 detik
+- Harus daftar akun? Tidak perlu
+- Apakah aman? Ya, hanya meminta ID publik, tidak pernah meminta password atau OTP
+- Apakah resmi? Ya, semua produk dibeli dari distributor resmi
+- Batas transaksi? Minimum Rp1.500, maksimum Rp10.000.000/hari

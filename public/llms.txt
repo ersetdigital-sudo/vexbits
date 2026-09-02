@@ -1,0 +1,24 @@
+# VEXBITS - Top Up Game Cepat, Murah & Aman
+
+## Tentang
+VEXBITS adalah platform top up game terpercaya di Indonesia yang melayani 6 game populer: Mobile Legends, Free Fire, PUBG Mobile, Genshin Impact, Magic Chess: Go Go, dan Call of Duty Mobile. Proses otomatis 10 detik, harga termurah, pembayaran aman via QRIS, e-wallet, VA bank, atau minimarket.
+
+## Struktur Situs
+- `/` - Beranda dengan daftar game populer
+- `/game/mobile-legends` - Top Up Mobile Legends: Bang Bang
+- `/game/free-fire` - Top Up Free Fire
+- `/game/pubg-mobile` - Top Up PUBG Mobile
+- `/game/genshin-impact` - Top Up Genshin Impact
+- `/game/magic-chess` - Top Up Magic Chess: Go Go
+- `/game/call-of-duty-mobile` - Top Up Call of Duty Mobile
+- `/cek-transaksi` - Cek status transaksi
+- `/bantuan` - Pusat bantuan dan FAQ
+- `/tentang-kami` - Tentang VEXBITS
+
+## Metode Pembayaran
+QRIS, GoPay, OVO, DANA, ShopeePay, BCA Virtual Account, BRI Virtual Account, Mandiri VA, Alfamart, Indomaret
+
+## Kontak
+- WhatsApp: +62 812-3456-7890
+- Email: support@vexbits.net
+- Instagram: @vexbits

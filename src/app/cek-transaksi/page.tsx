@@ -2,9 +2,19 @@ import type { Metadata } from "next";
 import GameHeader from "@/components/GameHeader";
 import CekTransaksiForm from "@/components/CekTransaksiForm";
 
+const SITE_URL = "https://www.vexbits.net";
+
 export const metadata: Metadata = {
-  title: "Cek Transaksi — VEXBITS",
-  description: "Cek status pesanan top up game kamu di VEXBITS lewat nomor invoice atau nomor WhatsApp, lengkap dengan riwayat transaksi.",
+  title: "Cek Status Transaksi Top Up Game | VEXBITS",
+  description: "Cek status pesanan top up game kamu di VEXBITS lewat nomor invoice atau nomor WhatsApp. Lacak pesanan secara real-time, lengkap dengan riwayat transaksi.",
+  alternates: { canonical: "/cek-transaksi" },
+  openGraph: {
+    title: "Cek Status Transaksi Top Up Game | VEXBITS",
+    description: "Cek status pesanan top up game kamu di VEXBITS lewat nomor invoice atau WhatsApp.",
+    url: `${SITE_URL}/cek-transaksi`,
+    images: ["/og-image.png"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function CekTransaksiPage() {

@@ -1,11 +1,90 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import HeroSlider from "@/components/HeroSlider";
 import GameGrid from "@/components/GameGrid";
 import Footer from "@/components/Footer";
 
+const SITE_URL = "https://www.vexbits.net";
+
+export const metadata: Metadata = {
+  title: "VEXBITS — Top Up Game Cepat, Murah & Aman",
+  description:
+    "Top up diamond, UC, dan voucher 6 game favorit (Mobile Legends, Free Fire, PUBG, Genshin Impact, Magic Chess, CODM) harga termurah. Proses otomatis 10 detik, bayar via QRIS, e-wallet, atau minimarket.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "VEXBITS — Top Up Game Cepat, Murah & Aman",
+    description: "Top up diamond, UC, dan voucher 6 game favorit harga termurah. Proses otomatis 10 detik.",
+    url: SITE_URL,
+    images: ["/og-image.png"],
+  },
+};
+
 export default function Home() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Berapa lama proses top up di VEXBITS?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Rata-rata 10 detik setelah pembayaran terkonfirmasi. Untuk metode transfer bank atau minimarket, konfirmasi bisa memakan waktu 1-10 menit.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apakah harus daftar akun dulu untuk top up?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tidak. Kamu bisa langsung pilih game, isi ID, dan bayar tanpa registrasi.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Metode pembayaran apa saja yang didukung VEXBITS?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "QRIS (semua e-wallet dan m-banking), GoPay, OVO, DANA, ShopeePay, Virtual Account BCA/BRI/Mandiri, serta pembayaran tunai di Alfamart dan Indomaret.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Apakah top up di VEXBITS aman?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Aman. VEXBITS hanya meminta ID publik (User ID/Zone ID/UID). Tidak pernah meminta password, OTP, atau akses ke akun game kamu.",
+        },
+      },
+    ],
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Beranda",
+        item: SITE_URL,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       {/* ================= HEADER ================= */}
       <Header />
 
