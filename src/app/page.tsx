@@ -1,69 +1,172 @@
-import Image from "next/image";
+import Header from "@/components/Header";
+import HeroSlider from "@/components/HeroSlider";
+import GameGrid from "@/components/GameGrid";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* ================= HEADER ================= */}
+      <Header />
+
+      {/* ================= HERO BANNER SLIDER ================= */}
+      <section id="beranda" className="pt-4 md:pt-6">
+        <div className="wrap">
+          <HeroSlider />
+
+          {/* quick trust strip */}
+          <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="card px-4 py-3 flex items-center gap-3">
+              <span className="w-9 h-9 rounded-xl bg-[var(--blue-soft)] text-[var(--blue)] grid place-items-center shrink-0"><svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></span>
+              <div><p className="text-sm font-bold leading-tight">Proses 10 detik</p><p className="text-xs text-[var(--ink-soft)]">Otomatis 24 jam</p></div>
+            </div>
+            <div className="card px-4 py-3 flex items-center gap-3">
+              <span className="w-9 h-9 rounded-xl bg-[#FFF1E6] text-[var(--orange)] grid place-items-center shrink-0"><svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3v18M7 7h7a3 3 0 0 1 0 6H7h8"></path></svg></span>
+              <div><p className="text-sm font-bold leading-tight">Harga termurah</p><p className="text-xs text-[var(--ink-soft)]">Tanpa biaya tersembunyi</p></div>
+            </div>
+            <div className="card px-4 py-3 flex items-center gap-3">
+              <span className="w-9 h-9 rounded-xl bg-[#E6FAF7] text-[var(--teal)] grid place-items-center shrink-0"><svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3 5 6v6c0 4.5 3 7.6 7 9 4-1.4 7-4.5 7-9V6z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+              <div><p className="text-sm font-bold leading-tight">Bayar aman</p><p className="text-xs text-[var(--ink-soft)]">QRIS &amp; e-wallet resmi</p></div>
+            </div>
+            <div className="card px-4 py-3 flex items-center gap-3">
+              <span className="w-9 h-9 rounded-xl bg-[var(--blue-soft)] text-[var(--blue)] grid place-items-center shrink-0"><svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a3 3 0 0 1 3-3h11a4 4 0 0 1 4 4z"></path></svg></span>
+              <div><p className="text-sm font-bold leading-tight">Support 24/7</p><p className="text-xs text-[var(--ink-soft)]">Balas di bawah 3 menit</p></div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* ================= GAME GRID ================= */}
+      <section id="games" className="py-10 md:py-14">
+        <div className="wrap">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-extrabold">Game Populer</h2>
+              <p className="text-sm md:text-base text-[var(--ink-soft)] mt-1">Pilih gamenya, isi ID, bayar. Sesederhana itu.</p>
+            </div>
+            <a href="/game/mobile-legends" className="text-sm font-bold text-[var(--blue)] hover:underline">Tampilkan semua →</a>
+          </div>
+
+          <GameGrid />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ================= KENAPA VEXBITS ================= */}
+      <section id="kenapa" className="py-10 md:py-14 bg-white border-y border-[var(--line)]">
+        <div className="wrap">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-center">Kenapa Pilih VEXBITS?</h2>
+          <p className="text-sm md:text-base text-[var(--ink-soft)] text-center mt-2 max-w-xl mx-auto">Dibangun untuk gamer Indonesia: cepat, transparan, dan selalu ada saat kamu butuh.</p>
+
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="card p-5">
+              <span className="w-11 h-11 rounded-xl bg-[var(--blue-soft)] text-[var(--blue)] grid place-items-center"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg></span>
+              <h3 className="mt-4 text-lg font-bold">Proses Cepat</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)]">Sistem otomatis mengirim item rata-rata dalam 10 detik setelah pembayaran terkonfirmasi.</p>
+            </div>
+            <div className="card p-5">
+              <span className="w-11 h-11 rounded-xl bg-[#FFF1E6] text-[var(--orange)] grid place-items-center"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"></path><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4z"></path></svg></span>
+              <h3 className="mt-4 text-lg font-bold">Harga Termurah</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)]">Harga distributor resmi tanpa markup. Promo mingguan dan cashback untuk member setia.</p>
+            </div>
+            <div className="card p-5">
+              <span className="w-11 h-11 rounded-xl bg-[#E6FAF7] text-[var(--teal)] grid place-items-center"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3 5 6v6c0 4.5 3 7.6 7 9 4-1.4 7-4.5 7-9V6z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+              <h3 className="mt-4 text-lg font-bold">Pembayaran Aman</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)]">Transaksi terenkripsi lewat payment gateway berlisensi. Data akun kamu tidak pernah kami simpan.</p>
+            </div>
+            <div className="card p-5">
+              <span className="w-11 h-11 rounded-xl bg-[var(--blue-soft)] text-[var(--blue)] grid place-items-center"><svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V6a3 3 0 0 1 3-3h11a4 4 0 0 1 4 4z"></path></svg></span>
+              <h3 className="mt-4 text-lg font-bold">Support 24/7</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)]">Tim CS manusia (bukan bot) siap membantu kapan pun, rata-rata dibalas di bawah 3 menit.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CARA ORDER ================= */}
+      <section id="cara-order" className="py-10 md:py-14">
+        <div className="wrap">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-center">Cara Order di VEXBITS</h2>
+          <p className="text-sm md:text-base text-[var(--ink-soft)] text-center mt-2">Empat langkah, tanpa perlu daftar akun.</p>
+
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-4">
+            <div className="relative text-center step-line">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-white border border-[var(--line)] grid place-items-center text-xl font-extrabold text-[var(--blue)] font-display shadow-soft relative z-10">1</div>
+              <h3 className="mt-3 font-bold">Pilih Game</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)] max-w-[240px] mx-auto">Cari game dari kolom pencarian atau grid game populer.</p>
+            </div>
+            <div className="relative text-center step-line">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-white border border-[var(--line)] grid place-items-center text-xl font-extrabold text-[var(--blue)] font-display shadow-soft relative z-10">2</div>
+              <h3 className="mt-3 font-bold">Isi ID &amp; Nominal</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)] max-w-[240px] mx-auto">Masukkan User ID / Server, lalu pilih nominal top up.</p>
+            </div>
+            <div className="relative text-center step-line">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-white border border-[var(--line)] grid place-items-center text-xl font-extrabold text-[var(--blue)] font-display shadow-soft relative z-10">3</div>
+              <h3 className="mt-3 font-bold">Bayar</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)] max-w-[240px] mx-auto">Bayar via QRIS, e-wallet, transfer bank, atau minimarket.</p>
+            </div>
+            <div className="relative text-center">
+              <div className="w-16 h-16 mx-auto rounded-2xl bg-[var(--orange)] grid place-items-center text-xl font-extrabold text-white font-display shadow-soft relative z-10">4</div>
+              <h3 className="mt-3 font-bold">Item Masuk</h3>
+              <p className="mt-1 text-sm text-[var(--ink-soft)] max-w-[240px] mx-auto">Item langsung masuk ke akun game, struk dikirim otomatis.</p>
+            </div>
+          </div>
+
+          {/* cek transaksi */}
+          <div id="cek-transaksi" style={{ background: "#0F1B33", borderColor: "#0F1B33" }} className="mt-10 card p-5 md:p-7 text-white md:flex md:items-center md:gap-8">
+            <div className="md:flex-1">
+              <h3 className="text-xl md:text-2xl font-extrabold">Cek Status Transaksi</h3>
+              <p className="mt-1 text-sm text-white/70">Masukkan nomor invoice atau nomor WhatsApp yang kamu pakai saat order.</p>
+            </div>
+            <form className="mt-4 md:mt-0 md:w-[440px] flex gap-2" action="/cek-transaksi" method="get">
+              <input type="text" name="inv" placeholder="Contoh: VXB-482913" className="flex-1 h-12 px-4 rounded-xl bg-white/10 border border-white/20 text-sm text-white placeholder-white/50 outline-none focus:border-[var(--orange)]" />
+              <button className="h-12 px-5 rounded-xl bg-[var(--orange)] font-bold text-sm hover:bg-[#F06C09]">Cek</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= TESTIMONI ================= */}
+      <section className="py-10 md:py-14 bg-white border-y border-[var(--line)]">
+        <div className="wrap">
+          <div className="grid grid-cols-3 gap-3 md:gap-6 text-center max-w-3xl mx-auto">
+            <div><p className="text-2xl md:text-4xl font-extrabold font-display text-[var(--blue)]">1,2 Jt+</p><p className="text-xs md:text-sm text-[var(--ink-soft)] mt-1">Transaksi sukses</p></div>
+            <div><p className="text-2xl md:text-4xl font-extrabold font-display text-[var(--blue)]">180 rb+</p><p className="text-xs md:text-sm text-[var(--ink-soft)] mt-1">Gamer terdaftar</p></div>
+            <div><p className="text-2xl md:text-4xl font-extrabold font-display text-[var(--blue)]">4,9/5</p><p className="text-xs md:text-sm text-[var(--ink-soft)] mt-1">Rating pelanggan</p></div>
+          </div>
+
+          <h2 className="mt-10 text-2xl md:text-3xl font-extrabold text-center">Kata Mereka yang Sudah Top Up</h2>
+
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
+            <figure className="card p-5">
+              <div className="flex gap-0.5 text-[var(--orange)]">★★★★★</div>
+              <blockquote className="mt-3 text-sm text-[var(--ink-soft)]">&quot;Bayar pakai QRIS, diamond masuk sebelum saya sempat balik ke game. Sekarang langganan di sini.&quot;</blockquote>
+              <figcaption className="mt-4 flex items-center gap-3">
+                <span className="w-9 h-9 rounded-full bg-[var(--blue-soft)] text-[var(--blue)] grid place-items-center font-bold text-sm">RA</span>
+                <span><span className="block text-sm font-bold">Rizky A.</span><span className="block text-xs text-[var(--ink-soft)]">Bandung</span></span>
+              </figcaption>
+            </figure>
+            <figure className="card p-5">
+              <div className="flex gap-0.5 text-[var(--orange)]">★★★★★</div>
+              <blockquote className="mt-3 text-sm text-[var(--ink-soft)]">&quot;Harganya beda tipis tapi konsisten lebih murah dari tempat lain, dan nggak ada biaya admin aneh-aneh.&quot;</blockquote>
+              <figcaption className="mt-4 flex items-center gap-3">
+                <span className="w-9 h-9 rounded-full bg-[#FFF1E6] text-[var(--orange)] grid place-items-center font-bold text-sm">DP</span>
+                <span><span className="block text-sm font-bold">Dinda P.</span><span className="block text-xs text-[var(--ink-soft)]">Surabaya</span></span>
+              </figcaption>
+            </figure>
+            <figure className="card p-5">
+              <div className="flex gap-0.5 text-[var(--orange)]">★★★★★</div>
+              <blockquote className="mt-3 text-sm text-[var(--ink-soft)]">&quot;Sempat salah isi ID, chat CS jam 2 pagi langsung dibantu sampai selesai. Salut.&quot;</blockquote>
+              <figcaption className="mt-4 flex items-center gap-3">
+                <span className="w-9 h-9 rounded-full bg-[#E6FAF7] text-[var(--teal)] grid place-items-center font-bold text-sm">BS</span>
+                <span><span className="block text-sm font-bold">Bagas S.</span><span className="block text-xs text-[var(--ink-soft)]">Makassar</span></span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= FOOTER ================= */}
+      <Footer />
+    </>
   );
 }
